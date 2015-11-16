@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="ZWave01.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZWave01"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBox x:Name="OutputField" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="223" Width="340"/>
+        <Button x:Name="Light20" Content="20%" HorizontalAlignment="Left" Margin="85,238,0,0" VerticalAlignment="Top" Width="70" Click="Light20_Click"/>
+        <Button x:Name="Light30" Content="30%" HorizontalAlignment="Left" Margin="160,238,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.218,-0.24" Width="70" Click="Light30_Click"/>
+        <Button x:Name="Devices" Content="Devices" HorizontalAlignment="Left" Margin="235,238,0,0" VerticalAlignment="Top" Click="Devices_Click"/>
+        <Button x:Name="Light00" Content="00%" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="70" Click="Light00_Click"/>
+
+    </Grid>
+</Page>
