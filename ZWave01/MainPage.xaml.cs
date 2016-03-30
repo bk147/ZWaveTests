@@ -53,11 +53,12 @@ namespace ZWave01
 //            var ah = new HttpCredentialsHeaderValue("Authentication", "Basic YWRtaW46YWRtaW4=")
             httpClient.DefaultRequestHeaders.Authorization = authHeader;
 
-//            httpClient.DefaultRequestHeaders.Remove("Accept-Encoding");
-//            httpClient.DefaultRequestHeaders.Remove("AcceptEncoding");
-//            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "deflate");
-            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "");
+// Took some time to figure out a "bug"? when using "deflate" which is default...
+            //            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "deflate");   //Problem here...
+            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip");
+//            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "");
 
+                // We're not using this at the moment...
             cts = new CancellationTokenSource();
         }
 
@@ -128,7 +129,6 @@ namespace ZWave01
             Uri resourceUri;
 
             TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices/LightScene_3/command/on", out resourceUri);
-//            filter.CacheControl.ReadBehavior = HttpCacheReadBehavior.MostRecent;
             HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
             await DisplayTextResultAsync(response, OutputField, cts.Token);
         }
@@ -138,7 +138,11 @@ namespace ZWave01
             Uri resourceUri;
 
             TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices/LightScene_4/command/on", out resourceUri);
+
             HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
+            //HttpStringContent content = new HttpStringContent("hello");
+            //HttpResponseMessage response = await httpClient.PutAsync(resourceUri,content).AsTask(cts.Token);
+
             await DisplayTextResultAsync(response, OutputField, cts.Token);
         }
 
@@ -156,6 +160,50 @@ namespace ZWave01
             Uri resourceUri;
 
             TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices", out resourceUri);
+            HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
+            await DisplayTextResultAsync(response, OutputField, cts.Token);
+        }
+
+        private async void ReolLamper_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            Uri resourceUri;
+
+            int intval = (int)e.NewValue;
+
+            TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices/ZWayVDev_zway_6-0-38/command/exact?level=" + intval.ToString(), out resourceUri);
+            HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
+            await DisplayTextResultAsync(response, OutputField, cts.Token);
+        }
+
+        private async void Spisebordslamper_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            Uri resourceUri;
+
+            int intval = (int)e.NewValue;
+
+            TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices/ZWayVDev_zway_5-0-38/command/exact?level=" + intval.ToString(), out resourceUri);
+            HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
+            await DisplayTextResultAsync(response, OutputField, cts.Token);
+        }
+
+        private async void Bordlampe_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            Uri resourceUri;
+
+            int intval = (int)e.NewValue;
+
+            TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices/ZWayVDev_zway_2-0-38/command/exact?level=" + intval.ToString(), out resourceUri);
+            HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
+            await DisplayTextResultAsync(response, OutputField, cts.Token);
+        }
+
+        private async void Cigarlampe_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            Uri resourceUri;
+
+            int intval = (int)e.NewValue;
+
+            TryGetUri("http://raspberrypi0:8083/ZAutomation/api/v1/devices/ZWayVDev_zway_9-0-38/command/exact?level=" + ((int)e.NewValue).ToString(), out resourceUri);
             HttpResponseMessage response = await httpClient.GetAsync(resourceUri).AsTask(cts.Token);
             await DisplayTextResultAsync(response, OutputField, cts.Token);
         }

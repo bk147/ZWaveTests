@@ -13,6 +13,11 @@
         <Button x:Name="Light30" Content="30%" HorizontalAlignment="Left" Margin="160,238,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.218,-0.24" Width="70" Click="Light30_Click"/>
         <Button x:Name="Devices" Content="Devices" HorizontalAlignment="Left" Margin="235,238,0,0" VerticalAlignment="Top" Click="Devices_Click"/>
         <Button x:Name="Light00" Content="00%" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="70" Click="Light00_Click"/>
+        <RelativePanel HorizontalAlignment="Left" Height="100" Margin="120,304,0,0" VerticalAlignment="Top" Width="100"/>
+        <Slider x:Name="ReolLamper" HorizontalAlignment="Left" Margin="10,309,0,0" VerticalAlignment="Top" Width="295" ValueChanged="ReolLamper_ValueChanged" ToolTipService.ToolTip="ReolLamper"/>
+        <Slider x:Name="Spisebordslamper" HorizontalAlignment="Left" Margin="10,346,0,0" VerticalAlignment="Top" Width="295" ValueChanged="Spisebordslamper_ValueChanged" ToolTipService.ToolTip="Spisebordslamper"/>
+        <Slider x:Name="Bordlampe" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Width="295" ValueChanged="Bordlampe_ValueChanged" ToolTipService.ToolTip="Bordlampe"/>
+        <Slider x:Name="Cigarlampe" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="295" ValueChanged="Cigarlampe_ValueChanged" ToolTipService.ToolTip="Cigarlampe"/>
 
     </Grid>
 </Page>
