@@ -50,6 +50,7 @@ namespace ZWave01
             string base64token = Windows.Security.Cryptography.CryptographicBuffer.EncodeToBase64String(buffer);
             HttpCredentialsHeaderValue authHeader = new HttpCredentialsHeaderValue("Basic", base64token);
 
+            //bk
 //            var ah = new HttpCredentialsHeaderValue("Authentication", "Basic YWRtaW46YWRtaW4=")
             httpClient.DefaultRequestHeaders.Authorization = authHeader;
 
