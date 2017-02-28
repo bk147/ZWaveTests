@@ -44,7 +44,7 @@ namespace ZWave01
             filter.CacheControl.ReadBehavior = HttpCacheReadBehavior.MostRecent;
             httpClient = new HttpClient(filter);
 
-            string username = "admin";
+            string username = "admin"; //Username
             string password = "admin";
             var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(username + ":" + password, Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
             string base64token = Windows.Security.Cryptography.CryptographicBuffer.EncodeToBase64String(buffer);
